@@ -1,187 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BBN Nutrition</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0f0d">
+  <title>BBN Nutrition | Original Supplements</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body><nav>
-    <h2>💪 BBN Nutrition</h2>
+<body>
 
-    <div class="menu">
-        <a href="#">Home</a>
-        <a href="#">Products</a>
-        <h2>🔥 Today's Offer</h2>
+<header class="topbar">
+  <a class="brand" href="#home">💪 BBN <span>Nutrition</span></a>
 
-<div class="offer">
-    <h3>30% OFF On Whey Protein</h3>
-    <p>Limited Time Offer</p>
-    <button>Claim Offer</button>
-</div>
-        <a href="#">Contact</a>
+  <nav class="nav-links">
+    <a href="#home">Home</a>
+    <a href="#products">Products</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <button class="cart-btn" onclick="openCart()">
+    🛒 Cart <span id="cartCount">0</span>
+  </button>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <span class="eyebrow">🔥 Today's Offer</span>
+      <h1>100% Original <span>Supplements</span></h1>
+      <p>Trusted Protein • Creatine • Mass Gainer • Pre Workout</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#products">Shop Now</a>
+        <a class="btn secondary" href="#contact">Contact Us</a>
+      </div>
+      <div class="trust-row">
+        <span>✓ Original Products</span>
+        <span>✓ Fast Delivery</span>
+        <span>✓ WhatsApp Support</span>
+      </div>
     </div>
-</nav>
+    <img class="hero-img"
+      src="https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=900"
+      alt="Supplement products">
+  </section>
 
-<h2>Why Choose BBN Nutrition?</h2>
+  <section class="offer-banner">
+    <div>
+      <span class="eyebrow">LIMITED TIME</span>
+      <h2>30% OFF on Whey Protein</h2>
+      <p>Grab today's special offer while it lasts.</p>
+    </div>
+    <a class="btn dark" href="#products">Claim Offer →</a>
+  </section>
 
-<div class="features">
-    <div class="feature">
-        <h3>✅ 100% Original</h3>
+  <section class="features-section">
+    <div class="section-heading">
+      <span class="eyebrow">WHY BBN</span>
+      <h2>Why Choose BBN Nutrition?</h2>
+    </div>
+    <div class="features">
+      <article class="feature">
+        <div class="feature-icon">✅</div>
+        <h3>100% Original</h3>
         <p>Authentic supplements from trusted brands.</p>
-    </div>
-
-    <div class="feature">
-        <h3>🚚 Fast Delivery</h3>
+      </article>
+      <article class="feature">
+        <div class="feature-icon">🚚</div>
+        <h3>Fast Delivery</h3>
         <p>Quick delivery across India.</p>
+      </article>
+      <article class="feature">
+        <div class="feature-icon">💬</div>
+        <h3>WhatsApp Support</h3>
+        <p>Easy help and order support when you need it.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="products-section" id="products">
+    <div class="section-heading">
+      <span class="eyebrow">SHOP</span>
+      <h2>Our Products</h2>
+      <p>Find your supplement and add it to your cart.</p>
     </div>
 
-    <div class="feature">
-        <h3>💬 24/7 Support</h3>
-        <p>We're always here to help you.</p>
+    <div class="search-wrap">
+      <span>🔍</span>
+      <input id="search" type="search" placeholder="Search Whey, Creatine, Mass Gainer..." oninput="searchProduct()">
     </div>
-</div>
-<nav>
-    <h2>💪 BBN Nutrition</h2>
 
-    <p id="cart">🛒 Cart (0)</p>
-    <p id="total">💰 Total: ₹0</p>
-    
-    <div class="menu">
-        <a href="#">Home</a>
-        <a href="#">Products</a>
-        <a href="#">Contact</a>
+    <div id="productsGrid" class="products-grid">
+
+      <article class="product-card" data-name="whey protein">
+        <div class="product-image-wrap">
+          <span class="badge">🔥 Best Seller</span>
+          <img class="product-img"
+            src="https://images.unsplash.com/photo-1594737625785-a6cbdabd333c?w=600"
+            alt="Whey Protein">
+        </div>
+        <div class="product-info">
+          <h3>💪 Whey Protein</h3>
+          <p class="rating">★★★★★ <span>(4.9)</span></p>
+          <p class="price"><del>₹2499</del> <strong>₹1999</strong></p>
+          <div class="quantity-row">
+            <button onclick="changeQuantity('whey', -1)">−</button>
+            <span id="quantity-whey">0</span>
+            <button onclick="changeQuantity('whey', 1)">+</button>
+          </div>
+          <button class="btn primary full" onclick="addToCart('whey')">Add to Cart</button>
+        </div>
+      </article>
+
+      <article class="product-card" data-name="creatine">
+        <div class="product-image-wrap">
+          <span class="badge">⚡ Popular</span>
+          <img class="product-img"
+            src="https://images.unsplash.com/photo-1594737625785-a6cbdabd333c?w=600"
+            alt="Creatine">
+        </div>
+        <div class="product-info">
+          <h3>⚡ Creatine</h3>
+          <p class="rating">★★★★★ <span>(4.9)</span></p>
+          <p class="price"><del>₹1449</del> <strong>₹999</strong></p>
+          <div class="quantity-row">
+            <button onclick="changeQuantity('creatine', -1)">−</button>
+            <span id="quantity-creatine">0</span>
+            <button onclick="changeQuantity('creatine', 1)">+</button>
+          </div>
+          <button class="btn primary full" onclick="addToCart('creatine')">Add to Cart</button>
+        </div>
+      </article>
+
+      <article class="product-card" data-name="mass gainer massgainer">
+        <div class="product-image-wrap">
+          <span class="badge">🔥 Best Seller</span>
+          <img class="product-img"
+            src="https://images.unsplash.com/photo-1594737625785-a6cbdabd333c?w=600"
+            alt="Mass Gainer">
+        </div>
+        <div class="product-info">
+          <h3>🏋️ Mass Gainer</h3>
+          <p class="rating">★★★★★ <span>(4.9)</span></p>
+          <p class="price"><del>₹3449</del> <strong>₹2449</strong></p>
+          <div class="quantity-row">
+            <button onclick="changeQuantity('gainer', -1)">−</button>
+            <span id="quantity-gainer">0</span>
+            <button onclick="changeQuantity('gainer', 1)">+</button>
+          </div>
+          <button class="btn primary full" onclick="addToCart('gainer')">Add to Cart</button>
+        </div>
+      </article>
+
     </div>
-</nav>
 
-<section>
-    <h1>100% Original Supplements</h1>
-    <p>Trusted Protein | Creatine | Mass Gainer | Pre Workout</p>
-    <button>Shop Now</button>
-    <img src="https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=500" class="hero-img">
-</section>
-<hr>
-<h2 id="products">Our Products</h2>
-<div class="product">
-  <span class="badge">🔥 Best Seller</span>
-  <img src="https://images.unsplash.com/photo-1594737625785-a6cbdabd333c?w=400" class="product-img">
-  
-  <h3>💪 Whey Protein</h3>
-  <p class="rating">⭐⭐⭐⭐⭐ (4.9)</p>
-  <p><del>₹2499</del> <b>₹1999</b></p>
-  <p id="quantity">Quantity: 0</p>
-  <button onclick="buyNow()">Buy Now</button>
-  <button onclick="resetCart()">🗑️ Reset Cart</button>
+    <p id="noResults" class="no-results hidden">No product found. Try another search.</p>
+  </section>
+
+  <section class="reviews-section" id="reviews">
+    <div class="section-heading">
+      <span class="eyebrow">CUSTOMER REVIEWS</span>
+      <h2>What Customers Say</h2>
+    </div>
+    <div class="reviews">
+      <article class="review"><strong>Aman</strong><span>★★★★★</span><p>Great experience and quick support.</p></article>
+      <article class="review"><strong>Rohit</strong><span>★★★★★</span><p>Easy ordering and smooth communication.</p></article>
+      <article class="review"><strong>Rahul</strong><span>★★★★★</span><p>Good products and fast response.</p></article>
+    </div>
+  </section>
+
+  <section class="contact-section" id="contact">
+    <div>
+      <span class="eyebrow">ORDER SUPPORT</span>
+      <h2>Ready to place your order?</h2>
+      <p>Fill your details and send the order directly on WhatsApp.</p>
+    </div>
+    <a class="btn primary" href="https://wa.me/918264028870" target="_blank" rel="noopener">💬 WhatsApp Us</a>
+  </section>
+</main>
+
+<div id="cartOverlay" class="overlay hidden" onclick="closeCart(event)">
+  <aside class="cart-panel" onclick="event.stopPropagation()">
+    <div class="cart-head">
+      <h2>🛒 Your Cart</h2>
+      <button class="close-btn" onclick="closeCart()">×</button>
+    </div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-summary">
+      <span>Total</span>
+      <strong id="cartTotal">₹0</strong>
+    </div>
+    <button class="btn primary full" onclick="openCheckout()">✅ Checkout</button>
+    <button class="btn outline full" onclick="resetCart()">🗑️ Clear Cart</button>
+  </aside>
 </div>
 
-</section>
-<hr>
-<h2 id="products">Our Products</h2>
-<div class="product">
-  <span class="badge">🔥 Best Seller</span>
-  <img src="https://images.unsplash.com/photo-1594737625785-a6cbdabd333c?w=400" class="product-img">
-  
-  <h3>💪 Creatine</h3>
-  <p class="rating">⭐⭐⭐⭐⭐ (4.9)</p>
-  <p><del>₹2499</del> <b>₹1999</b></p>
-  <p id="quantity">Quantity: 0</p>
-  <button onclick="buyNow()">Buy Now</button>
-  <button onclick="resetCart()">🗑️ Reset Cart</button>
+<div id="checkoutOverlay" class="overlay hidden" onclick="closeCheckout(event)">
+  <div class="checkout-panel" onclick="event.stopPropagation()">
+    <div class="cart-head">
+      <h2>📦 Place Your Order</h2>
+      <button class="close-btn" onclick="closeCheckout()">×</button>
+    </div>
+    <input id="name" type="text" placeholder="Your Name">
+    <input id="phone" type="tel" placeholder="Phone Number">
+    <textarea id="address" placeholder="Delivery Address"></textarea>
+    <button class="btn primary full" onclick="checkout()">Send Order on WhatsApp</button>
+  </div>
 </div>
 
-
-</section>
-<hr>
-<h2 id="products">Our Products</h2>
-<div class="product">
-  <span class="badge">🔥 Best Seller</span>
-  <img src="https://images.unsplash.com/photo-1594737625785-a6cbdabd333c?w=400" class="product-img">
-  
-  <h3>💪 mass Gainer</h3>
-  <p class="rating">⭐⭐⭐⭐⭐ (4.9)</p>
-  <p><del>₹2499</del> <b>₹1999</b></p>
-  <p id="quantity">Quantity: 0</p>
-  <button onclick="buyNow()">Buy Now</button>
-  <button onclick="resetCart()">🗑️ Reset Cart</button>
-</div>
-
- 
- <h2>⭐ Customer Reviews</h2>
-<div class="review">
- <h3>Aman ⭐⭐⭐⭐⭐</h3>
-</div>
-
-<div class="review">
-  <h3>Rohit ⭐⭐⭐⭐⭐</h3>
-</div>
-
-<div class="review">
-  <h3>Rahul ⭐⭐⭐⭐⭐</h3>
-</div>
-
-<a href="https://wa.me/918264028870" class="whatsapp">
-  💬 WhatsApp
-</a>
-<hr>
-<h2>📦 Place Your Order</h2>
-
-<div class="order-form">
-
-<input type="text" id="name" placeholder="Your Name">
-
-<input type="tel" id="phone" placeholder="Phone Number">
-
-<textarea id="address" placeholder="Full Address"></textarea>
-
-<button onclick="checkout()">✅ Place Order</button>
-
-</div>
-
-<hr>
-<a href="https://wa.me/918264028870" class="whatsapp">
-  💬 WhatsApp
-</a>
-
-<hr>
-
-<footer>
-...
-</footer>
-
-<hr>
-
-<h2>🛒 Checkout</h2>
-
-<div class="product">
-
-<input type="text" id="name" placeholder="Your Name"><br><br>
-
-<input type="text" id="phone" placeholder="Phone Number"><br><br>
-
-<textarea id="address" placeholder="Delivery Address"></textarea><br><br>
-
-<button onclick="checkout()">✅ Place Order</button>
-
-</div>
+<a class="whatsapp" href="https://wa.me/918264028870" target="_blank" rel="noopener">💬 WhatsApp</a>
 
 <footer>
   <h3>💪 BBN Nutrition</h3>
-
   <p>100% Original Supplements</p>
-
   <p>📍 India</p>
-
   <p>📞 +91 8264028870</p>
-
   <p>✉️ Dakshchandel9816@gmail.com</p>
-
   <hr>
-
   <p>© 2026 BBN Nutrition. All Rights Reserved.</p>
 </footer>
 
-<script type="module" src="firebase.js"></script>
 <script src="script.js"></script>
-
 </body>
-</html>
+    </html>
+    
